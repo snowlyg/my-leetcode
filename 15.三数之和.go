@@ -1,9 +1,15 @@
+//go:build 7
+// +build 7
+
 package main
 
-import "sort"
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
-	threeSum([]int{1, 2, 4, 5, -9})
+	fmt.Println(threeSum([]int{-1, 0, 1, 2, -1, -4}))
 }
 
 /*

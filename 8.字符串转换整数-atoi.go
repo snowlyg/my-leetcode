@@ -1,3 +1,6 @@
+//go:build 5
+// +build 5
+
 package main
 
 import (

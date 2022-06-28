@@ -1,3 +1,6 @@
+//go:build 3
+// +build 3
+
 package main
 
 func main() {

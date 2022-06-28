@@ -1,3 +1,6 @@
+//go:build 4
+// +build 4
+
 package main
 
 func main() {
