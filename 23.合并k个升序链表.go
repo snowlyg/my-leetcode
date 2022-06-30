@@ -12,11 +12,11 @@ func main() {
 	l2 := &ListNode{Val: 1, Next: &ListNode{Val: 3, Next: &ListNode{Val: 4}}}
 	l3 := &ListNode{Val: 2, Next: &ListNode{Val: 6, Next: &ListNode{Val: 8}}}
 	l := ListNodes{l1, l2, l3}
-	mergeKLists(l)
-	// for p != nil {
-	// 	println(p.Val)
-	// 	p = p.Next
-	// }
+	p := mergeKLists(l)
+	for p != nil {
+		println(p.Val)
+		p = p.Next
+	}
 }
 
 /*
@@ -35,18 +35,22 @@ func main() {
  */
 type ListNodes []*ListNode
 
+// 长度
 func (l *ListNodes) Len() int {
 	return len(*l)
 }
 
+// 比较
 func (l *ListNodes) Less(i, j int) bool {
 	return (*l)[i].Val < (*l)[j].Val
 }
 
+// 对调
 func (l *ListNodes) Swap(i, j int) {
 	(*l)[i], (*l)[j] = (*l)[j], (*l)[i]
 }
 
+// 移除末位并返回
 func (l *ListNodes) Pop() interface{} {
 	n := len(*l)
 	x := (*l)[n-1]
@@ -54,6 +58,7 @@ func (l *ListNodes) Pop() interface{} {
 	return x
 }
 
+//加入节点
 func (l *ListNodes) Push(x interface{}) {
 	*l = append(*l, x.(*ListNode))
 }
