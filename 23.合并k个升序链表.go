@@ -1,3 +1,6 @@
+//go:build 23
+// +build 23
+
 package main
 
 import "container/heap"
