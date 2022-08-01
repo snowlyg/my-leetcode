@@ -15,6 +15,7 @@ type TreeNode struct {
 }
 
 func main() {
+	// 中序遍历
 	root := &TreeNode{
 		Val:  5,
 		Left: &TreeNode{Val: 1},
