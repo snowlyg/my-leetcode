@@ -45,31 +45,30 @@ func main() {
  * }
  */
 
-var res = math.MinInt
-
 func maxPathSum(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-	// 计算单边路径和时顺便计算最大路径和
-	oneSideMax(root)
-	return res
-}
+	maxSum := math.MinInt32
+    var maxGain func(*TreeNode) int
+    maxGain = func(node *TreeNode) int {
+        if node == nil {
+            return 0
+        }
 
-// 定义：计算从根节点 root 为起点的最大单边路径和
-func oneSideMax(node *TreeNode) int {
-	if node == nil {
-		return 0
-	}
-	leftMax := max(0, oneSideMax(node.Left))
-	rightMax := max(0, oneSideMax(node.Right))
-	// 后序遍历位置，顺便更新最大路径和
-	pathMax := node.Val + leftMax + rightMax
-	res = max(res, pathMax)
+        // 递归计算左右子节点的最大贡献值
+        // 只有在最大贡献值大于 0 时，才会选取对应子节点
+        leftGain := max(maxGain(node.Left), 0)
+        rightGain := max(maxGain(node.Right), 0)
 
-	// 实现函数定义，左右子树的最大单边路径和加上根节点的值
-	// 就是从根节点 root 为起点的最大单边路径和
-	return max(leftMax, rightMax) + node.Val
+        // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+        priceNewPath := node.Val + leftGain + rightGain
+
+        // 更新答案
+        maxSum = max(maxSum, priceNewPath)
+
+        // 返回节点的最大贡献值
+        return node.Val + max(leftGain, rightGain)
+    }
+    maxGain(root)
+    return maxSum
 }
 
 func max(x, y int) int {
