@@ -1,3 +1,6 @@
+//go:build 121
+// +build 121
+
 package main
 
 import (
@@ -24,11 +27,11 @@ func maxProfit(prices []int) int {
 		dp[i] = make([]int, 2)
 		if i == 0 {
 			dp[i][0] = 0
-			dp[i][1] = -prices[i]
+			dp[i][1] = -prices[i] // 买入
 			continue
 		}
 		dp[i][0] = max(dp[i-1][0], dp[i-1][1]+prices[i])
-		dp[i][1] = max(dp[i-1][1], -prices[i])
+		dp[i][1] = max(dp[i-1][1], -prices[i]) // 买入
 	}
 	return dp[n-1][0]
 }
