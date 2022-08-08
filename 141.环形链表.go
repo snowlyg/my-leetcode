@@ -1,3 +1,6 @@
+//go:build 141
+// +build 141
+
 package main
 
 import "fmt"
