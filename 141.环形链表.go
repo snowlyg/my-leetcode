@@ -27,6 +27,7 @@ func main() {
  * }
  */
 func hasCycle(head *ListNode) bool {
+	// 快慢指针，追赶 验证回环
 	slow, fast := head, head
 	for fast != nil && fast.Next != nil {
 		slow = slow.Next
