@@ -1,3 +1,6 @@
+//go:build 46
+// +build 46
+
 package main
 
 func main() {
