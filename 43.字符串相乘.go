@@ -1,3 +1,6 @@
+//go:build 43
+// +build 43
+
 package main
 
 import "strconv"
